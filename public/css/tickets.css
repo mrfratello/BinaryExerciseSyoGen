@@ -1,0 +1,33 @@
+.ticket{
+    margin-bottom: 0;
+    padding: 2em 0;
+    border-bottom: 1px solid #cccccc;
+}
+.ticket__header{
+    font-weight: 700;
+    font-size: 1.1em;
+    margin-bottom: 1.3em;
+}
+.ticket_result__body{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}
+
+@media print {
+    .ticket {
+        font-size: 16pt;
+        min-height: 70mm;
+        -webkit-column-break-inside: avoid;
+                  page-break-inside: avoid;
+    }
+    .ticket_result{
+        page-break-before: always;
+        -webkit-column-break-inside: auto;
+                  page-break-inside: auto;
+    }
+    .single-ticket-answer {
+        -webkit-column-break-inside: avoid;
+                  page-break-inside: avoid;
+    }
+}
