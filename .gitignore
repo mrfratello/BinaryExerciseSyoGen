@@ -3,3 +3,4 @@ vendor/
 bower_components/
 *.sublime-project
 *.sublime-workspace
+current_number.txt

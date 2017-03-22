@@ -72,15 +72,16 @@
             . printNumberInNotation($result, $notation) ;
     }
 
-    if (isset($_GET['count_tickets'])) {
+    if (isset($_GET['count_tickets']) && isset($_GET['start_number_ticket']) ) {
         include_once "header.php";
         $count_tickets = (int) $_GET['count_tickets'];
+        $start_number_ticket = (int) $_GET['start_number_ticket'];
         $ticket_list = getTickets( $count_tickets );
         for ($i = 0; $i < count($ticket_list); $i++) {
 ?>
     <div class="ticket">
         <div class="ticket__header text-center">
-            Билет №<?php echo $i + 1; ?>
+            Билет №<?php echo $start_number_ticket + $i; ?>
         </div>
         <div class="ticket__body">
             <ol class="questions">
@@ -129,7 +130,7 @@
             ?>
                 <div class="single-ticket-answer">
                     <div>
-                        <strong>Билет №<?php echo $i + 1; ?></strong>
+                        <strong>Билет №<?php echo $start_number_ticket + $i; ?></strong>
                     </div>
                     <ol>
                         <li>
@@ -184,7 +185,7 @@
         </div>
     </div>
 <?php
-
+        file_put_contents("../current_number.txt", $start_number_ticket + count($ticket_list));
         include_once "footer.php";
     } else {
         header("Location: /");
